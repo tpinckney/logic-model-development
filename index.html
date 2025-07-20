@@ -1,49 +1,69 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Logic Model Builder - Vision Shift Catalyst</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <title>Logic Model Builder</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-gray-100 font-sans">
-  <div class="p-4 text-center">
-    <h1 class="text-3xl font-bold text-olive-700">Logic Model Builder</h1>
-    <p class="text-sm font-semibold text-gray-600">Brought to you by Vision Shift Catalyst</p>
-    <p class="mt-2 text-gray-700">
+<body>
+  <header>
+    <h1>Logic Model Builder</h1>
+    <h2>Brought to you by Vision Shift Catalyst</h2>
+    <p>
       Build a logic model that connects your program's inputs, activities, and outcomes—
       with clarity, intention, and measurable impact.
     </p>
-  </div>
+  </header>
 
-  <div id="logic-model" class="grid gap-4 p-4 lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2">
-    <!-- Logic model boxes go here -->
-  </div>
+  <main>
+    <div class="builder-container">
+      <input type="text" id="itemInput" placeholder="Enter item" />
+      <select id="categorySelect">
+        <option value="Inputs">Inputs</option>
+        <option value="Activities">Activities</option>
+        <option value="Outputs">Outputs</option>
+        <option value="Short-Term Outcomes">Short-Term Outcomes</option>
+        <option value="Medium-Term Outcomes">Medium-Term Outcomes</option>
+        <option value="Long-Term Outcomes">Long-Term Outcomes</option>
+      </select>
+      <button id="addItem">Add</button>
+    </div>
 
-  <div class="p-4 flex flex-col items-center space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0 justify-center">
-    <input type="text" id="newItem" class="border p-2 rounded" placeholder="Enter item" />
-    <select id="category" class="border p-2 rounded">
-      <option>Inputs</option>
-      <option>Activities</option>
-      <option>Outputs</option>
-      <option>Short-Term Outcomes</option>
-      <option>Medium-Term Outcomes</option>
-      <option>Long-Term Outcomes</option>
-    </select>
-    <button id="addBtn" class="bg-olive-700 text-white px-4 py-2 rounded">Add</button>
-  </div>
+    <div id="logicModel">
+      <div class="column" id="Inputs">
+        <h3>Inputs</h3>
+        <ul></ul>
+      </div>
+      <div class="column" id="Activities">
+        <h3>Activities</h3>
+        <ul></ul>
+      </div>
+      <div class="column" id="Outputs">
+        <h3>Outputs</h3>
+        <ul></ul>
+      </div>
+      <div class="column" id="Short-Term Outcomes">
+        <h3>Short-Term Outcomes</h3>
+        <ul></ul>
+      </div>
+      <div class="column" id="Medium-Term Outcomes">
+        <h3>Medium-Term Outcomes</h3>
+        <ul></ul>
+      </div>
+      <div class="column" id="Long-Term Outcomes">
+        <h3>Long-Term Outcomes</h3>
+        <ul></ul>
+      </div>
+    </div>
 
-  <div class="p-4 flex justify-center space-x-4">
-    <button id="clearBtn" class="bg-gray-600 text-white px-4 py-2 rounded">Clear</button>
-    <button id="exportExcelBtn" class="bg-green-600 text-white px-4 py-2 rounded">Excel</button>
-    <button id="exportPdfBtn" class="bg-orange-500 text-white px-4 py-2 rounded">PDF</button>
-    <button id="downloadImageBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Image</button>
-  </div>
-
-  <div id="shareableLink" class="text-center text-sm text-gray-600 mt-2"></div>
+    <div class="buttons">
+      <button id="clear">Clear</button>
+      <button id="exportExcel">Excel</button>
+      <button id="exportPDF">PDF</button>
+      <button id="exportImage">Image</button>
+    </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
