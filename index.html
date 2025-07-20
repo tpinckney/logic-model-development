@@ -44,12 +44,30 @@
     </div>
 
     <div class="flex overflow-x-auto gap-4 mb-6">
-      ${['inputs', 'activities', 'outputs', 'short', 'medium', 'long'].map(cat => `
-        <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="${cat}">
-          <h2 contenteditable="true" class="text-center font-semibold text-lg editable">${cat.charAt(0).toUpperCase() + cat.slice(1)}</h2>
-          <ul id="${cat}-list" class="space-y-2 mt-2"></ul>
-        </div>
-      `).join('')}
+      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="inputs">
+        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Inputs</h2>
+        <ul id="inputs-list" class="space-y-2 mt-2"></ul>
+      </div>
+      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="activities">
+        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Activities</h2>
+        <ul id="activities-list" class="space-y-2 mt-2"></ul>
+      </div>
+      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="outputs">
+        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Outputs</h2>
+        <ul id="outputs-list" class="space-y-2 mt-2"></ul>
+      </div>
+      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="short">
+        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Short-Term Outcomes</h2>
+        <ul id="short-list" class="space-y-2 mt-2"></ul>
+      </div>
+      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="medium">
+        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Medium-Term Outcomes</h2>
+        <ul id="medium-list" class="space-y-2 mt-2"></ul>
+      </div>
+      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="long">
+        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Long-Term Outcomes</h2>
+        <ul id="long-list" class="space-y-2 mt-2"></ul>
+      </div>
     </div>
 
     <div class="bg-white p-4 rounded shadow-md no-print mb-4">
@@ -59,9 +77,9 @@
           <option value="inputs">Inputs</option>
           <option value="activities">Activities</option>
           <option value="outputs">Outputs</option>
-          <option value="short">Short-Term</option>
-          <option value="medium">Medium-Term</option>
-          <option value="long">Long-Term</option>
+          <option value="short">Short-Term Outcomes</option>
+          <option value="medium">Medium-Term Outcomes</option>
+          <option value="long">Long-Term Outcomes</option>
         </select>
         <button onclick="addItem()" class="bg-green-800 text-white px-4 py-2 rounded">Add</button>
       </div>
