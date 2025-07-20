@@ -1,0 +1,39 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f3f3;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+.logic-box {
+  background: #fdfdd0;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: 250px;
+  min-height: 100px;
+  text-align: left;
+}
+.input-area input,
+.input-area select {
+  padding: 8px;
+  margin: 5px;
+}
+.input-area button {
+  padding: 8px 12px;
+}
+.buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+}
