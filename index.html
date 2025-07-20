@@ -4,122 +4,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Logic Model Builder</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #eeeeea;
-      margin: 0;
-      padding: 2rem;
-    }
-
-    h1 {
-      text-align: center;
-      color: #4d5009;
-    }
-
-    .subtitle {
-      text-align: center;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 1rem;
-    }
-
-    .description {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 1rem;
-      color: #333;
-    }
-
-    .row {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .column {
-      flex: 1;
-      min-width: 150px;
-      background-color: #f4f4dd;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-
-    .column h3 {
-      margin-top: 0;
-      border-bottom: 2px solid #64690c;
-      color: #333;
-    }
-
-    .item {
-      background-color: white;
-      padding: 0.5rem;
-      border-radius: 4px;
-      margin-top: 0.5rem;
-      position: relative;
-    }
-
-    .item button {
-      position: absolute;
-      top: 4px;
-      right: 4px;
-      background: none;
-      border: none;
-      font-weight: bold;
-      color: #c00;
-      cursor: pointer;
-    }
-
-    .controls {
-      display: flex;
-      justify-content: center;
-      margin: 2rem 0;
-      gap: 0.5rem;
-    }
-
-    input, select {
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-
-    button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 4px;
-      background-color: #64690c;
-      color: white;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #4d5009;
-    }
-  </style>
+  <title>Logic Model Builder - Vision Shift Catalyst</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <h1>Logic Model Builder</h1>
-  <div class="subtitle">Brought to you by Vision Shift Catalyst</div>
-  <div class="description">
-    Build a logic model that connects your program's inputs, activities, and outcomes—with clarity, intention, and measurable impact.
+<body class="bg-gray-100 font-sans">
+  <div class="p-4 text-center">
+    <h1 class="text-3xl font-bold text-olive-700">Logic Model Builder</h1>
+    <p class="text-sm font-semibold text-gray-600">Brought to you by Vision Shift Catalyst</p>
+    <p class="mt-2 text-gray-700">
+      Build a logic model that connects your program's inputs, activities, and outcomes—
+      with clarity, intention, and measurable impact.
+    </p>
   </div>
 
-  <div class="row">
-    <div class="column"><h3>Inputs</h3><div class="item">Funding <button>x</button></div><div class="item">Staff <button>x</button></div></div>
-    <div class="column"><h3>Activities</h3><div class="item">Workshops <button>x</button></div><div class="item">Mentoring <button>x</button></div></div>
-    <div class="column"><h3>Outputs</h3><div class="item"># Students Served <button>x</button></div></div>
-    <div class="column"><h3>Short-Term Outcomes</h3><div class="item">Increased Knowledge <button>x</button></div></div>
-    <div class="column"><h3>Medium-Term Outcomes</h3><div class="item">Behavior Change <button>x</button></div></div>
-    <div class="column"><h3>Long-Term Outcomes</h3><div class="item">Sustained Impact <button>x</button></div></div>
+  <div id="logic-model" class="grid gap-4 p-4 lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2">
+    <!-- Logic model boxes go here -->
   </div>
 
-  <div class="controls">
-    <input type="text" placeholder="Enter item"/>
-    <select>
+  <div class="p-4 flex flex-col items-center space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0 justify-center">
+    <input type="text" id="newItem" class="border p-2 rounded" placeholder="Enter item" />
+    <select id="category" class="border p-2 rounded">
       <option>Inputs</option>
       <option>Activities</option>
       <option>Outputs</option>
@@ -127,13 +33,18 @@
       <option>Medium-Term Outcomes</option>
       <option>Long-Term Outcomes</option>
     </select>
-    <button>Add</button>
+    <button id="addBtn" class="bg-olive-700 text-white px-4 py-2 rounded">Add</button>
   </div>
 
-  <div class="controls">
-    <button>Clear</button>
-    <button style="background-color: green;">Excel</button>
-    <button style="background-color: orange;">PDF</button>
+  <div class="p-4 flex justify-center space-x-4">
+    <button id="clearBtn" class="bg-gray-600 text-white px-4 py-2 rounded">Clear</button>
+    <button id="exportExcelBtn" class="bg-green-600 text-white px-4 py-2 rounded">Excel</button>
+    <button id="exportPdfBtn" class="bg-orange-500 text-white px-4 py-2 rounded">PDF</button>
+    <button id="downloadImageBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Image</button>
   </div>
+
+  <div id="shareableLink" class="text-center text-sm text-gray-600 mt-2"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
