@@ -4,41 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Logic Model Builder</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1>Logic Model Builder</h1>
-    <h2>Brought to you by Vision Shift Catalyst</h2>
-    <p>Build a logic model that connects your program's inputs, activities, and outcomes—with clarity, intention, and measurable impact.</p>
-
-    <div class="input-area">
-      <input type="text" id="itemInput" placeholder="Enter item" />
+    <p class="subtitle">Brought to you by Vision Shift Catalyst</p>
+    <p class="description">
+      Build a logic model that connects your program's inputs, activities, and outcomes — with clarity, intention, and measurable impact.
+    </p>
+    <div class="form-row">
+      <input type="text" id="itemInput" placeholder="Enter item"/>
       <select id="categorySelect">
-        <option value="inputs">Inputs</option>
-        <option value="activities">Activities</option>
-        <option value="outputs">Outputs</option>
-        <option value="shortTerm">Short-Term Outcomes</option>
-        <option value="mediumTerm">Medium-Term Outcomes</option>
-        <option value="longTerm">Long-Term Outcomes</option>
+        <option value="Inputs">Inputs</option>
+        <option value="Activities">Activities</option>
+        <option value="Outputs">Outputs</option>
+        <option value="Short-Term Outcomes">Short-Term Outcomes</option>
+        <option value="Medium-Term Outcomes">Medium-Term Outcomes</option>
+        <option value="Long-Term Outcomes">Long-Term Outcomes</option>
       </select>
       <button onclick="addItem()">Add</button>
     </div>
-
-    <div class="grid">
-      <div id="inputs" class="logic-box"><h3>Inputs</h3></div>
-      <div id="activities" class="logic-box"><h3>Activities</h3></div>
-      <div id="outputs" class="logic-box"><h3>Outputs</h3></div>
-      <div id="shortTerm" class="logic-box"><h3>Short-Term Outcomes</h3></div>
-      <div id="mediumTerm" class="logic-box"><h3>Medium-Term Outcomes</h3></div>
-      <div id="longTerm" class="logic-box"><h3>Long-Term Outcomes</h3></div>
+    <div class="model" id="modelContainer">
+      <div class="category" id="Inputs"><h2>Inputs</h2><ul></ul></div>
+      <div class="category" id="Activities"><h2>Activities</h2><ul></ul></div>
+      <div class="category" id="Outputs"><h2>Outputs</h2><ul></ul></div>
+      <div class="category" id="Short-Term Outcomes"><h2>Short-Term Outcomes</h2><ul></ul></div>
+      <div class="category" id="Medium-Term Outcomes"><h2>Medium-Term Outcomes</h2><ul></ul></div>
+      <div class="category" id="Long-Term Outcomes"><h2>Long-Term Outcomes</h2><ul></ul></div>
     </div>
-
     <div class="buttons">
       <button onclick="clearAll()">Clear</button>
-      <button onclick="exportToExcel()">Excel</button>
-      <button onclick="exportToPDF()">PDF</button>
-      <button onclick="exportToImage()">Image</button>
+      <button onclick="exportExcel()">Excel</button>
+      <button onclick="exportPDF()">PDF</button>
+      <button onclick="downloadImage()">Image</button>
     </div>
   </div>
   <script src="script.js"></script>

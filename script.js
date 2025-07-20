@@ -1,34 +1,31 @@
-
 function addItem() {
-  const itemInput = document.getElementById('itemInput');
-  const category = document.getElementById('categorySelect').value;
-  const box = document.getElementById(category);
-
-  if (itemInput.value.trim() !== '') {
-    const div = document.createElement('div');
-    div.textContent = itemInput.value;
-    box.appendChild(div);
-    itemInput.value = '';
+  const item = document.getElementById("itemInput").value;
+  const category = document.getElementById("categorySelect").value;
+  if (item && category) {
+    const list = document.getElementById(category).querySelector("ul");
+    const li = document.createElement("li");
+    li.textContent = item;
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "×";
+    delBtn.onclick = () => li.remove();
+    li.appendChild(delBtn);
+    list.appendChild(li);
+    document.getElementById("itemInput").value = "";
   }
 }
 
 function clearAll() {
-  ['inputs', 'activities', 'outputs', 'shortTerm', 'mediumTerm', 'longTerm'].forEach(id => {
-    const box = document.getElementById(id);
-    while (box.children.length > 1) {
-      box.removeChild(box.lastChild);
-    }
-  });
+  document.querySelectorAll(".category ul").forEach(ul => ul.innerHTML = "");
 }
 
-function exportToExcel() {
-  alert('Excel export functionality coming soon!');
+function exportExcel() {
+  alert("Excel export coming soon.");
 }
 
-function exportToPDF() {
-  alert('PDF export functionality coming soon!');
+function exportPDF() {
+  alert("PDF export coming soon.");
 }
 
-function exportToImage() {
-  alert('Image download functionality coming soon!');
+function downloadImage() {
+  alert("Image download coming soon.");
 }
