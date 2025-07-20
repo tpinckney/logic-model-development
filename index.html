@@ -2,225 +2,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Logic Model Builder</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #ececd9;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logic Model Builder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eeeeea;
+      margin: 0;
+      padding: 2rem;
+    }
 
-        h1 {
-            text-align: center;
-            color: #64690c;
-        }
+    h1 {
+      text-align: center;
+      color: #4d5009;
+    }
 
-        .subheader {
-            text-align: center;
-            font-weight: bold;
-        }
+    .subtitle {
+      text-align: center;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 1rem;
+    }
 
-        .description {
-            text-align: center;
-            font-size: 16px;
-            margin: 10px 0 30px;
-        }
+    .description {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      color: #333;
+    }
 
-        .header-inputs {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
 
-        .header-inputs input {
-            padding: 10px;
-            margin: 0 5px;
-            width: 200px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+    .column {
+      flex: 1;
+      min-width: 150px;
+      background-color: #f4f4dd;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
 
-        .logic-columns {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+    .column h3 {
+      margin-top: 0;
+      border-bottom: 2px solid #64690c;
+      color: #333;
+    }
 
-        .column {
-            flex: 1;
-            min-width: 200px;
-            background-color: #f4f4e0;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
+    .item {
+      background-color: white;
+      padding: 0.5rem;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+      position: relative;
+    }
 
-        .column h3 {
-            border-bottom: 2px solid #64690c;
-            padding-bottom: 5px;
-        }
+    .item button {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: none;
+      border: none;
+      font-weight: bold;
+      color: #c00;
+      cursor: pointer;
+    }
 
-        .item {
-            background: white;
-            margin: 5px 0;
-            padding: 8px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .controls {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+      gap: 0.5rem;
+    }
 
-        .item button {
-            background: #f77c18;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            padding: 2px 6px;
-            cursor: pointer;
-        }
+    input, select {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
 
-        .form-control {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #64690c;
+      color: white;
+      cursor: pointer;
+    }
 
-        .form-control input, .form-control select {
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        .form-control button {
-            background: #64690c;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .export-buttons {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .export-buttons button {
-            margin: 0 10px;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .pdf { background-color: #f77c18; color: white; }
-        .excel { background-color: #28a745; color: white; }
-        .clear { background-color: #6c757d; color: white; }
-
-    </style>
+    button:hover {
+      background-color: #4d5009;
+    }
+  </style>
 </head>
 <body>
-    <h1>Logic Model Builder</h1>
-    <div class="subheader">Brought to you by Vision Shift Catalyst</div>
-    <div class="description">
-        Build a logic model that connects your program's inputs, activities, and outcomes—
-        with clarity, intention, and measurable impact.
-    </div>
+  <h1>Logic Model Builder</h1>
+  <div class="subtitle">Brought to you by Vision Shift Catalyst</div>
+  <div class="description">
+    Build a logic model that connects your program's inputs, activities, and outcomes—with clarity, intention, and measurable impact.
+  </div>
 
-    <div class="header-inputs">
-        <input type="text" placeholder="Program Name">
-        <input type="text" placeholder="Author Name">
-        <input type="text" placeholder="mm/dd/yyyy">
-    </div>
+  <div class="row">
+    <div class="column"><h3>Inputs</h3><div class="item">Funding <button>x</button></div><div class="item">Staff <button>x</button></div></div>
+    <div class="column"><h3>Activities</h3><div class="item">Workshops <button>x</button></div><div class="item">Mentoring <button>x</button></div></div>
+    <div class="column"><h3>Outputs</h3><div class="item"># Students Served <button>x</button></div></div>
+    <div class="column"><h3>Short-Term Outcomes</h3><div class="item">Increased Knowledge <button>x</button></div></div>
+    <div class="column"><h3>Medium-Term Outcomes</h3><div class="item">Behavior Change <button>x</button></div></div>
+    <div class="column"><h3>Long-Term Outcomes</h3><div class="item">Sustained Impact <button>x</button></div></div>
+  </div>
 
-    <div class="logic-columns">
-        <div class="column">
-            <h3>Inputs</h3>
-            <div class="item">Funding <button>x</button></div>
-            <div class="item">Staff <button>x</button></div>
-        </div>
-        <div class="column">
-            <h3>Activities</h3>
-            <div class="item">Workshops <button>x</button></div>
-            <div class="item">Mentoring <button>x</button></div>
-        </div>
-        <div class="column">
-            <h3>Outputs</h3>
-            <div class="item"># Students Served <button>x</button></div>
-        </div>
-        <div class="column">
-            <h3>Short-Term Outcomes</h3>
-            <div class="item">Increased Knowledge <button>x</button></div>
-        </div>
-        <div class="column">
-            <h3>Medium-Term Outcomes</h3>
-            <div class="item">Behavior Change <button>x</button></div>
-        </div>
-        <div class="column">
-            <h3>Long-Term Outcomes</h3>
-            <div class="item">Sustained Impact <button>x</button></div>
-        </div>
-    </div>
+  <div class="controls">
+    <input type="text" placeholder="Enter item"/>
+    <select>
+      <option>Inputs</option>
+      <option>Activities</option>
+      <option>Outputs</option>
+      <option>Short-Term Outcomes</option>
+      <option>Medium-Term Outcomes</option>
+      <option>Long-Term Outcomes</option>
+    </select>
+    <button>Add</button>
+  </div>
 
-    <div class="form-control">
-        <input type="text" placeholder="Enter item">
-        <select>
-            <option>Inputs</option>
-            <option>Activities</option>
-            <option>Outputs</option>
-            <option>Short-Term Outcomes</option>
-            <option>Medium-Term Outcomes</option>
-            <option>Long-Term Outcomes</option>
-        </select>
-        <button>Add</button>
-    </div>
-
-    <div class="export-buttons">
-        <button class="clear">Clear</button>
-        <button class="excel">Excel</button>
-        <button class="pdf">PDF</button>
-    </div>
-</body>
-</html>
-
--Term Outcomes</h3>
-            <div class="item">Knowledge Gained <button>x</button></div>
-        </div>
-        <div class="column">
-            <h3>Medium-Term Outcomes</h3>
-            <div class="item">Behavior Change <button>x</button></div>
-        </div>
-        <div class="column">
-            <h3>Long-Term Outcomes</h3>
-            <div class="item">Graduation <button>x</button></div>
-        </div>
-    </div>
-
-    <div class="form-control">
-        <input type="text" placeholder="Enter item">
-        <select>
-            <option>Inputs</option>
-            <option>Activities</option>
-            <option>Outputs</option>
-            <option>Short-Term Outcomes</option>
-            <option>Medium-Term Outcomes</option>
-            <option>Long-Term Outcomes</option>
-        </select>
-        <button>Add</button>
-    </div>
-
-    <div class="export-buttons">
-        <button class="clear">Clear</button>
-        <button class="excel">Excel</button>
-        <button class="pdf">PDF</button>
-        <button class="pdf">Image</button>
-        <button class="excel">Share</button>
-    </div>
+  <div class="controls">
+    <button>Clear</button>
+    <button style="background-color: green;">Excel</button>
+    <button style="background-color: orange;">PDF</button>
+  </div>
 </body>
 </html>
