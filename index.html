@@ -3,42 +3,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Logic Model Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logic Model Builder - Vision Shift Catalyst</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>Logic Model Builder</h1>
-        <h2>Brought to you by Vision Shift Catalyst</h2>
-        <p>Build a logic model that connects your program's inputs, activities, and outcomes—with clarity, intention, and measurable impact.</p>
-        <div class="input-section">
-            <input type="text" id="itemInput" placeholder="Enter item"/>
-            <select id="categorySelect">
-                <option>Inputs</option>
-                <option>Activities</option>
-                <option>Outputs</option>
-                <option>Short-Term Outcomes</option>
-                <option>Medium-Term Outcomes</option>
-                <option>Long-Term Outcomes</option>
-            </select>
-            <button onclick="addItem()">Add</button>
-        </div>
-        <div class="grid">
-            <div><h3>Inputs</h3><ul id="Inputs"></ul></div>
-            <div><h3>Activities</h3><ul id="Activities"></ul></div>
-            <div><h3>Outputs</h3><ul id="Outputs"></ul></div>
-            <div><h3>Short-Term Outcomes</h3><ul id="Short-Term Outcomes"></ul></div>
-            <div><h3>Medium-Term Outcomes</h3><ul id="Medium-Term Outcomes"></ul></div>
-            <div><h3>Long-Term Outcomes</h3><ul id="Long-Term Outcomes"></ul></div>
-        </div>
-        <div class="buttons">
-            <button>Clear</button>
-            <button>Excel</button>
-            <button>PDF</button>
-            <button>Image</button>
-        </div>
-    </div>
+        <h2>Brought to you by <strong>Vision Shift Catalyst</strong></h2>
+        <p>Build a logic model that connects your program’s inputs, activities, and outcomes—with clarity, intention, and measurable impact.</p>
+    </header>
+    <section class="meta">
+        <input type="text" id="programName" placeholder="Program Name" />
+        <input type="text" id="userName" placeholder="Your Name" />
+        <input type="date" id="date" />
+    </section>
+    <section id="builder">
+        <div class="column" id="inputs"><h3>Inputs</h3></div>
+        <div class="column" id="activities"><h3>Activities</h3></div>
+        <div class="column" id="outputs"><h3>Outputs</h3></div>
+        <div class="column" id="shortTerm"><h3>Short-Term Outcomes</h3></div>
+        <div class="column" id="mediumTerm"><h3>Medium-Term Outcomes</h3></div>
+        <div class="column" id="longTerm"><h3>Long-Term Outcomes</h3></div>
+    </section>
+    <section class="controls">
+        <input type="text" id="itemInput" placeholder="Enter item" />
+        <select id="category">
+            <option value="inputs">Inputs</option>
+            <option value="activities">Activities</option>
+            <option value="outputs">Outputs</option>
+            <option value="shortTerm">Short-Term Outcomes</option>
+            <option value="mediumTerm">Medium-Term Outcomes</option>
+            <option value="longTerm">Long-Term Outcomes</option>
+        </select>
+        <button onclick="addItem()">Add</button>
+        <button onclick="clearAll()">Clear</button>
+        <button onclick="downloadExcel()">Excel</button>
+        <button onclick="downloadPDF()">PDF</button>
+        <button onclick="downloadImage()">Image</button>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>
