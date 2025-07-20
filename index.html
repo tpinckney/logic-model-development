@@ -3,22 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Logic Model Builder</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Logic Model Builder - Vision Shift Catalyst</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <header>
     <h1>Logic Model Builder</h1>
-    <h2>Brought to you by Vision Shift Catalyst</h2>
-    <p>
-      Build a logic model that connects your program's inputs, activities, and outcomes—
-      with clarity, intention, and measurable impact.
-    </p>
+    <p><strong>Brought to you by Vision Shift Catalyst</strong></p>
+    <p>Build a logic model that connects your program's inputs, activities, and outcomes— with clarity, intention, and measurable impact.</p>
   </header>
 
   <main>
-    <div class="builder-container">
-      <input type="text" id="itemInput" placeholder="Enter item" />
+    <div class="input-section">
+      <input type="text" id="itemInput" placeholder="Enter item"/>
       <select id="categorySelect">
         <option value="Inputs">Inputs</option>
         <option value="Activities">Activities</option>
@@ -27,38 +24,20 @@
         <option value="Medium-Term Outcomes">Medium-Term Outcomes</option>
         <option value="Long-Term Outcomes">Long-Term Outcomes</option>
       </select>
-      <button id="addItem">Add</button>
+      <button id="addButton">Add</button>
     </div>
 
     <div id="logicModel">
-      <div class="column" id="Inputs">
-        <h3>Inputs</h3>
-        <ul></ul>
-      </div>
-      <div class="column" id="Activities">
-        <h3>Activities</h3>
-        <ul></ul>
-      </div>
-      <div class="column" id="Outputs">
-        <h3>Outputs</h3>
-        <ul></ul>
-      </div>
-      <div class="column" id="Short-Term Outcomes">
-        <h3>Short-Term Outcomes</h3>
-        <ul></ul>
-      </div>
-      <div class="column" id="Medium-Term Outcomes">
-        <h3>Medium-Term Outcomes</h3>
-        <ul></ul>
-      </div>
-      <div class="column" id="Long-Term Outcomes">
-        <h3>Long-Term Outcomes</h3>
-        <ul></ul>
-      </div>
+      <div class="column" id="Inputs"><h2>Inputs</h2></div>
+      <div class="column" id="Activities"><h2>Activities</h2></div>
+      <div class="column" id="Outputs"><h2>Outputs</h2></div>
+      <div class="column" id="Short-Term Outcomes"><h2>Short-Term Outcomes</h2></div>
+      <div class="column" id="Medium-Term Outcomes"><h2>Medium-Term Outcomes</h2></div>
+      <div class="column" id="Long-Term Outcomes"><h2>Long-Term Outcomes</h2></div>
     </div>
 
     <div class="buttons">
-      <button id="clear">Clear</button>
+      <button id="clearButton">Clear</button>
       <button id="exportExcel">Excel</button>
       <button id="exportPDF">PDF</button>
       <button id="exportImage">Image</button>
