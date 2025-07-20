@@ -5,115 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Logic Model Builder - Vision Shift Catalyst</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              gold: '#f4cd76',
-              olive: '#64690c',
-              cream: '#ececd9',
-              orange: '#f77c18',
-              black: '#000000',
-              white: '#ffffff',
-              darkOlive: '#4d5009',
-              darkOrange: '#d86500',
-              darkGold: '#c9a44d'
-            }
-          }
-        }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <style>
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .no-print {
+        display: none !important;
       }
     }
-  </script>
-  <style>
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: #ececd9;
+      overflow-x: auto;
     }
     .logic-box {
-      min-width: 200px;
-      transition: all 0.3s ease;
+      min-width: 180px;
     }
-    .logic-box:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .arrow::after {
-      content: '→';
-      font-size: 20px;
-      margin: 0 10px;
-      color: #333;
+    .logo {
+      height: 50px;
     }
   </style>
 </head>
 <body>
-  <div class="container mx-auto px-4 py-8 bg-[#ececd9]">
-    <div class="text-center mb-8">
-      <h1 class="text-4xl font-bold text-brand-darkOlive">Logic Model Builder</h1>
-      <p class="text-lg text-brand-darkOrange font-semibold">Brought to you by Vision Shift Catalyst</p>
-      <p class="mt-4 text-brand-black max-w-3xl mx-auto">
-        Build a logic model that connects your program's inputs, activities, and outcomes—with clarity, intention, and measurable impact.
-      </p>
+  <div class="container mx-auto px-4 py-6 bg-[#ececd9]">
+    <div class="flex items-center justify-between mb-4">
+      <img src="vision shift catalyst.svg" alt="Vision Shift Catalyst Logo" class="logo">
+      <h1 class="text-2xl font-bold text-brand-darkOlive text-right">Logic Model Builder</h1>
     </div>
+    <p class="text-sm text-gray-800 mb-6">Build a logic model that connects your program's inputs, activities, and outcomes—with clarity, intention, and measurable impact.</p>
 
-    <div class="flex flex-col md:flex-row items-start justify-start gap-4 overflow-x-auto mb-8">
-      <div class="logic-box bg-white border-t-4 border-brand-darkOlive rounded-lg p-4 flex-1">
-        <h2 class="text-xl font-bold text-brand-darkOlive text-center">Inputs</h2>
-        <p class="text-xs text-center mb-2">(resources invested)</p>
-        <ul id="inputs-list" class="space-y-2"></ul>
+    <div class="flex overflow-x-auto gap-4 mb-6">
+      <div class="logic-box bg-white border-t-4 border-green-800 rounded p-2 flex-1">
+        <h2 class="text-center font-semibold text-green-800">Inputs</h2>
+        <ul id="inputs-list" class="space-y-2 mt-2"></ul>
       </div>
-      <div class="arrow"></div>
-      <div class="logic-box bg-white border-t-4 border-brand-darkGold rounded-lg p-4 flex-1">
-        <h2 class="text-xl font-bold text-brand-darkGold text-center">Activities</h2>
-        <p class="text-xs text-center mb-2">(what you do)</p>
-        <ul id="activities-list" class="space-y-2"></ul>
+      <div class="logic-box bg-white border-t-4 border-yellow-600 rounded p-2 flex-1">
+        <h2 class="text-center font-semibold text-yellow-700">Activities</h2>
+        <ul id="activities-list" class="space-y-2 mt-2"></ul>
       </div>
-      <div class="arrow"></div>
-      <div class="logic-box bg-white border-t-4 border-brand-darkOrange rounded-lg p-4 flex-1">
-        <h2 class="text-xl font-bold text-brand-darkOrange text-center">Outputs</h2>
-        <p class="text-xs text-center mb-2">(immediate deliverables)</p>
-        <ul id="outputs-list" class="space-y-2"></ul>
+      <div class="logic-box bg-white border-t-4 border-orange-600 rounded p-2 flex-1">
+        <h2 class="text-center font-semibold text-orange-700">Outputs</h2>
+        <ul id="outputs-list" class="space-y-2 mt-2"></ul>
       </div>
-      <div class="arrow"></div>
-      <div class="logic-box bg-white border-t-4 border-brand-darkGold rounded-lg p-4 flex-1">
-        <h2 class="text-xl font-bold text-brand-darkGold text-center">Short-Term Outcomes</h2>
-        <p class="text-xs text-center mb-2">(knowledge, skills, awareness)</p>
-        <ul id="short-list" class="space-y-2"></ul>
+      <div class="logic-box bg-white border-t-4 border-yellow-600 rounded p-2 flex-1">
+        <h2 class="text-center font-semibold text-yellow-700">Short-Term</h2>
+        <ul id="short-list" class="space-y-2 mt-2"></ul>
       </div>
-      <div class="arrow"></div>
-      <div class="logic-box bg-white border-t-4 border-brand-darkOrange rounded-lg p-4 flex-1">
-        <h2 class="text-xl font-bold text-brand-darkOrange text-center">Medium-Term Outcomes</h2>
-        <p class="text-xs text-center mb-2">(behavior, practice, performance)</p>
-        <ul id="medium-list" class="space-y-2"></ul>
+      <div class="logic-box bg-white border-t-4 border-orange-600 rounded p-2 flex-1">
+        <h2 class="text-center font-semibold text-orange-700">Medium-Term</h2>
+        <ul id="medium-list" class="space-y-2 mt-2"></ul>
       </div>
-      <div class="arrow"></div>
-      <div class="logic-box bg-white border-t-4 border-brand-darkOlive rounded-lg p-4 flex-1">
-        <h2 class="text-xl font-bold text-brand-darkOlive text-center">Long-Term Outcomes</h2>
-        <p class="text-xs text-center mb-2">(impact, systems, sustainability)</p>
-        <ul id="long-list" class="space-y-2"></ul>
+      <div class="logic-box bg-white border-t-4 border-green-800 rounded p-2 flex-1">
+        <h2 class="text-center font-semibold text-green-800">Long-Term</h2>
+        <ul id="long-list" class="space-y-2 mt-2"></ul>
       </div>
     </div>
 
-    <div class="bg-white rounded-lg p-6 mb-8 shadow">
-      <h2 class="text-xl font-semibold text-brand-black mb-4">Add New Item</h2>
-      <div class="flex flex-col md:flex-row gap-4">
-        <input id="item-text" type="text" placeholder="Enter item text" class="flex-1 border border-gray-300 p-2 rounded">
-        <select id="item-category" class="w-48 border border-gray-300 p-2 rounded">
+    <div class="bg-white p-4 rounded shadow-md no-print mb-4">
+      <div class="flex flex-col md:flex-row gap-2">
+        <input id="item-text" placeholder="Enter item" class="border p-2 rounded flex-1" />
+        <select id="item-category" class="border p-2 rounded">
           <option value="inputs">Inputs</option>
           <option value="activities">Activities</option>
           <option value="outputs">Outputs</option>
-          <option value="short">Short-Term Outcomes</option>
-          <option value="medium">Medium-Term Outcomes</option>
-          <option value="long">Long-Term Outcomes</option>
+          <option value="short">Short-Term</option>
+          <option value="medium">Medium-Term</option>
+          <option value="long">Long-Term</option>
         </select>
-        <button id="add-item" class="bg-brand-darkOlive text-white px-4 py-2 rounded hover:bg-brand-olive">Add Item</button>
+        <button onclick="addItem()" class="bg-green-800 text-white px-4 py-2 rounded">Add Item</button>
       </div>
     </div>
 
-    <div class="flex justify-between items-center mb-12">
-      <button id="clear-all" class="border px-4 py-2 rounded text-brand-black bg-white hover:bg-gray-100">Clear All Items</button>
-      <button id="print-btn" class="bg-brand-darkOrange text-white px-6 py-2 rounded hover:bg-opacity-90">Export Logic Model</button>
+    <div class="flex justify-end gap-2 no-print">
+      <button onclick="clearAll()" class="px-4 py-2 border rounded bg-white">Clear All</button>
+      <button onclick="window.print()" class="bg-orange-600 text-white px-4 py-2 rounded">Export to PDF</button>
+      <button onclick="exportToExcel()" class="bg-yellow-600 text-white px-4 py-2 rounded">Export to Excel</button>
     </div>
   </div>
 
@@ -127,31 +96,37 @@
       long: document.getElementById('long-list')
     };
 
-    function createListItem(text) {
-      const li = document.createElement('li');
-      li.className = 'flex justify-between items-center bg-brand-cream p-2 rounded shadow';
-      li.innerHTML = `<span>${text}</span><button class="text-red-600 hover:text-red-800" onclick="this.parentElement.remove()">✕</button>`;
-      return li;
-    }
-
-    document.getElementById('add-item').addEventListener('click', () => {
+    function addItem() {
       const text = document.getElementById('item-text').value.trim();
       const category = document.getElementById('item-category').value;
       if (text && lists[category]) {
-        lists[category].appendChild(createListItem(text));
+        const li = document.createElement('li');
+        li.className = 'bg-[#ececd9] p-2 rounded flex justify-between items-center';
+        li.innerHTML = `<span>${text}</span><button onclick="this.parentElement.remove()" class="text-red-600">✕</button>`;
+        lists[category].appendChild(li);
         document.getElementById('item-text').value = '';
       }
-    });
+    }
 
-    document.getElementById('clear-all').addEventListener('click', () => {
-      if (confirm("Are you sure you want to clear all items?")) {
+    function clearAll() {
+      if (confirm("Clear all items?")) {
         Object.values(lists).forEach(list => list.innerHTML = '');
       }
-    });
+    }
 
-    document.getElementById('print-btn').addEventListener('click', () => {
-      window.print();
-    });
+    function exportToExcel() {
+      const data = Object.keys(lists).map(key => {
+        return {
+          category: key,
+          items: Array.from(lists[key].children).map(li => li.textContent.trim())
+        };
+      });
+      const sheetData = data.map(section => [section.category.toUpperCase(), ...section.items]);
+      const ws = XLSX.utils.aoa_to_sheet(sheetData);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "LogicModel");
+      XLSX.writeFile(wb, "logic_model.xlsx");
+    }
   </script>
 </body>
 </html>
