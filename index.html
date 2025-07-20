@@ -1,195 +1,155 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Logic Model Builder</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <style>
-    @media print {
-      .no-print {
-        display: none !important;
-      }
-    }
     body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #ececd9;
+      font-family: Arial, sans-serif;
+      background-color: #f2f1e7;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
     }
-    .logic-box {
-      min-width: 180px;
+    h1 {
+      color: #3e4e00;
     }
-    .editable {
-      border-bottom: 1px dashed gray;
-      cursor: pointer;
+    .description {
+      font-size: 16px;
+      margin-bottom: 30px;
     }
-    .editable:focus {
-      outline: none;
-      border-bottom: 2px solid black;
+    .section {
+      margin: 10px;
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+    }
+    .item-box {
+      background: #f1f0db;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 6px;
+    }
+    input, select, button {
+      padding: 8px;
+      margin: 4px;
+    }
+    .controls {
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="container mx-auto px-4 py-6">
-    <div class="text-center mb-4">
-      <h1 class="text-4xl font-bold text-brand-darkOlive">Logic Model Builder</h1>
-    </div>
+  <h1>Logic Model Builder</h1>
+  <div class="description">
+    <strong>Brought to you by Vision Shift Catalyst</strong><br>
+    Build a logic model that connects your program's inputs, activities, and outcomes—
+    with clarity, intention, and measurable impact.
+  </div>
 
-    <div class="bg-white p-4 rounded mb-4 no-print">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <input id="program-name" class="p-2 border rounded" placeholder="Program Name" />
-        <input id="author-name" class="p-2 border rounded" placeholder="Author Name" />
-        <input id="date-field" type="date" class="p-2 border rounded" />
-      </div>
-    </div>
+  <div>
+    <input id="programName" placeholder="Program Name">
+    <input id="authorName" placeholder="Author Name">
+    <input id="dateField" placeholder="mm/dd/yyyy">
+  </div>
 
-    <div class="flex overflow-x-auto gap-4 mb-6">
-      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="inputs">
-        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Inputs</h2>
-        <ul id="inputs-list" class="space-y-2 mt-2"></ul>
-      </div>
-      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="activities">
-        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Activities</h2>
-        <ul id="activities-list" class="space-y-2 mt-2"></ul>
-      </div>
-      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="outputs">
-        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Outputs</h2>
-        <ul id="outputs-list" class="space-y-2 mt-2"></ul>
-      </div>
-      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="short">
-        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Short-Term Outcomes</h2>
-        <ul id="short-list" class="space-y-2 mt-2"></ul>
-      </div>
-      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="medium">
-        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Medium-Term Outcomes</h2>
-        <ul id="medium-list" class="space-y-2 mt-2"></ul>
-      </div>
-      <div class="logic-box bg-white border-t-4 rounded p-2 flex-1" data-category="long">
-        <h2 contenteditable="true" class="text-center font-semibold text-lg editable">Long-Term Outcomes</h2>
-        <ul id="long-list" class="space-y-2 mt-2"></ul>
-      </div>
-    </div>
+  <div id="logic-model"></div>
 
-    <div class="bg-white p-4 rounded shadow-md no-print mb-4">
-      <div class="flex flex-col md:flex-row gap-2">
-        <input id="item-text" placeholder="Enter item" class="border p-2 rounded flex-1" />
-        <select id="item-category" class="border p-2 rounded">
-          <option value="inputs">Inputs</option>
-          <option value="activities">Activities</option>
-          <option value="outputs">Outputs</option>
-          <option value="short">Short-Term Outcomes</option>
-          <option value="medium">Medium-Term Outcomes</option>
-          <option value="long">Long-Term Outcomes</option>
-        </select>
-        <button onclick="addItem()" class="bg-green-800 text-white px-4 py-2 rounded">Add</button>
-      </div>
-    </div>
+  <div>
+    <input id="itemText" placeholder="Enter item">
+    <select id="itemCategory">
+      <option>Inputs</option>
+      <option>Activities</option>
+      <option>Outputs</option>
+      <option>Short-Term Outcomes</option>
+      <option>Medium-Term Outcomes</option>
+      <option>Long-Term Outcomes</option>
+    </select>
+    <button onclick="addItem()">Add</button>
+  </div>
 
-    <div class="flex flex-wrap justify-between items-center gap-2 no-print">
-      <div class="flex gap-2">
-        <button onclick="clearAll()" class="px-4 py-2 border rounded bg-white">Clear</button>
-        <button onclick="saveModel()" class="bg-yellow-600 text-white px-4 py-2 rounded">Save</button>
-        <button onclick="loadModel()" class="bg-blue-600 text-white px-4 py-2 rounded">Load</button>
-        <button onclick="exportToExcel()" class="bg-green-600 text-white px-4 py-2 rounded">Excel</button>
-        <button onclick="window.print()" class="bg-orange-600 text-white px-4 py-2 rounded">PDF</button>
-      </div>
-      <div>
-        <button onclick="copyEmbed()" class="text-sm text-brand-black underline">Copy Embed Code</button>
-        <input id="embed-code" readonly class="text-xs p-1 border rounded w-full mt-1" value="<iframe src='YOUR_URL_HERE' width='100%' height='600'></iframe>">
-      </div>
-    </div>
+  <div class="controls">
+    <button onclick="clearAll()">Clear</button>
+    <button onclick="saveModel()">Save</button>
+    <button onclick="loadModel()">Load</button>
+    <button onclick="exportExcel()">Excel</button>
+    <button onclick="exportPDF()">PDF</button>
+  </div>
+
+  <div style="margin-top:20px;">
+    <strong>Copy Embed Code</strong>
+    <input readonly value="<iframe src='YOUR_URL_HERE' width='100%' height='600'></iframe>" style="width:80%;"/>
   </div>
 
   <script>
-    const categories = ['inputs', 'activities', 'outputs', 'short', 'medium', 'long'];
-    const lists = {};
-    categories.forEach(cat => {
-      lists[cat] = document.getElementById(cat + '-list');
-    });
+    const sections = {
+      "Inputs": [],
+      "Activities": [],
+      "Outputs": [],
+      "Short-Term Outcomes": [],
+      "Medium-Term Outcomes": [],
+      "Long-Term Outcomes": []
+    };
+
+    function render() {
+      let html = '';
+      for (let [key, items] of Object.entries(sections)) {
+        html += `<div class="section"><h3>${key}</h3>`;
+        items.forEach((item, index) => {
+          html += `<div class="item-box">${item} <button onclick="removeItem('${key}', ${index})">x</button></div>`;
+        });
+        html += '</div>';
+      }
+      document.getElementById('logic-model').innerHTML = html;
+    }
 
     function addItem() {
-      const text = document.getElementById('item-text').value.trim();
-      const category = document.getElementById('item-category').value;
-      if (text && lists[category]) {
-        const li = document.createElement('li');
-        li.className = 'bg-[#ececd9] p-2 rounded flex justify-between items-center';
-        li.innerHTML = `<span>${text}</span><button onclick="this.parentElement.remove()" class="text-red-600">✕</button>`;
-        lists[category].appendChild(li);
-        document.getElementById('item-text').value = '';
+      const text = document.getElementById('itemText').value.trim();
+      const category = document.getElementById('itemCategory').value;
+      if (text) {
+        sections[category].push(text);
+        render();
+        document.getElementById('itemText').value = '';
       }
+    }
+
+    function removeItem(category, index) {
+      sections[category].splice(index, 1);
+      render();
     }
 
     function clearAll() {
-      if (confirm("Clear all?")) {
-        Object.values(lists).forEach(list => list.innerHTML = '');
-        localStorage.removeItem("logicModelData");
-      }
+      for (let key in sections) sections[key] = [];
+      render();
     }
 
     function saveModel() {
-      const data = {
-        program: document.getElementById('program-name').value,
-        author: document.getElementById('author-name').value,
-        date: document.getElementById('date-field').value,
-        sections: {}
-      };
-      categories.forEach(cat => {
-        data.sections[cat] = {
-          title: document.querySelector('[data-category="' + cat + '"] h2').textContent,
-          items: Array.from(lists[cat].children).map(li => li.firstChild.textContent)
-        };
-      });
-      localStorage.setItem("logicModelData", JSON.stringify(data));
-      alert("Saved!");
+      localStorage.setItem('logicModelData', JSON.stringify(sections));
+      alert("Saved to browser storage!");
     }
 
     function loadModel() {
-      const data = JSON.parse(localStorage.getItem("logicModelData") || "{}");
-      if (data.program) document.getElementById('program-name').value = data.program;
-      if (data.author) document.getElementById('author-name').value = data.author;
-      if (data.date) document.getElementById('date-field').value = data.date;
-
-      if (data.sections) {
-        categories.forEach(cat => {
-          const section = data.sections[cat];
-          if (section) {
-            const titleEl = document.querySelector('[data-category="' + cat + '"] h2');
-            if (titleEl && section.title) titleEl.textContent = section.title;
-            lists[cat].innerHTML = '';
-            (section.items || []).forEach(text => {
-              const li = document.createElement('li');
-              li.className = 'bg-[#ececd9] p-2 rounded flex justify-between items-center';
-              li.innerHTML = `<span>${text}</span><button onclick="this.parentElement.remove()" class="text-red-600">✕</button>`;
-              lists[cat].appendChild(li);
-            });
-          }
-        });
+      const data = localStorage.getItem('logicModelData');
+      if (data) {
+        const parsed = JSON.parse(data);
+        for (let key in parsed) sections[key] = parsed[key];
+        render();
+      } else {
+        alert("No saved model found.");
       }
     }
 
-    function exportToExcel() {
-      const data = [["Program", document.getElementById('program-name').value],
-                    ["Author", document.getElementById('author-name').value],
-                    ["Date", document.getElementById('date-field').value], [], ["Category", "Item"]];
-      categories.forEach(cat => {
-        const title = document.querySelector('[data-category="' + cat + '"] h2').textContent;
-        const items = Array.from(lists[cat].children).map(li => li.firstChild.textContent);
-        data.push([title]);
-        items.forEach(item => data.push(["", item]));
-        data.push([]);
-      });
-      const ws = XLSX.utils.aoa_to_sheet(data);
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, "Logic Model");
-      XLSX.writeFile(wb, "logic_model.xlsx");
+    function exportExcel() {
+      alert("Excel export will be available in next version.");
     }
 
-    function copyEmbed() {
-      const embedInput = document.getElementById("embed-code");
-      embedInput.select();
-      document.execCommand("copy");
-      alert("Embed code copied!");
+    function exportPDF() {
+      window.print();
     }
+
+    window.onload = render;
   </script>
 </body>
 </html>
