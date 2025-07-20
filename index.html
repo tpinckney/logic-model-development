@@ -2,154 +2,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Logic Model Builder</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f1e7;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      color: #3e4e00;
-    }
-    .description {
-      font-size: 16px;
-      margin-bottom: 30px;
-    }
-    .section {
-      margin: 10px;
-      display: inline-block;
-      vertical-align: top;
-      text-align: left;
-    }
-    .item-box {
-      background: #f1f0db;
-      padding: 8px;
-      margin: 4px 0;
-      border-radius: 6px;
-    }
-    input, select, button {
-      padding: 8px;
-      margin: 4px;
-    }
-    .controls {
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Logic Model Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #ececd9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #64690c;
+        }
+
+        .subheader {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .description {
+            text-align: center;
+            font-size: 16px;
+            margin: 10px 0 30px;
+        }
+
+        .header-inputs {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-inputs input {
+            padding: 10px;
+            margin: 0 5px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .logic-columns {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .column {
+            flex: 1;
+            min-width: 200px;
+            background-color: #f4f4e0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .column h3 {
+            border-bottom: 2px solid #64690c;
+            padding-bottom: 5px;
+        }
+
+        .item {
+            background: white;
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item button {
+            background: #f77c18;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 2px 6px;
+            cursor: pointer;
+        }
+
+        .form-control {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .form-control input, .form-control select {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-control button {
+            background: #64690c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .export-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .export-buttons button {
+            margin: 0 10px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .pdf { background-color: #f77c18; color: white; }
+        .excel { background-color: #28a745; color: white; }
+        .clear { background-color: #6c757d; color: white; }
+
+    </style>
 </head>
 <body>
-  <h1>Logic Model Builder</h1>
-  <div class="description">
-    <strong>Brought to you by Vision Shift Catalyst</strong><br>
-    Build a logic model that connects your program's inputs, activities, and outcomes—
-    with clarity, intention, and measurable impact.
-  </div>
+    <h1>Logic Model Builder</h1>
+    <div class="subheader">Brought to you by Vision Shift Catalyst</div>
+    <div class="description">
+        Build a logic model that connects your program's inputs, activities, and outcomes—
+        with clarity, intention, and measurable impact.
+    </div>
 
-  <div>
-    <input id="programName" placeholder="Program Name">
-    <input id="authorName" placeholder="Author Name">
-    <input id="dateField" placeholder="mm/dd/yyyy">
-  </div>
+    <div class="header-inputs">
+        <input type="text" placeholder="Program Name">
+        <input type="text" placeholder="Author Name">
+        <input type="text" placeholder="mm/dd/yyyy">
+    </div>
 
-  <div id="logic-model"></div>
+    <div class="logic-columns">
+        <div class="column">
+            <h3>Inputs</h3>
+            <div class="item">Funding <button>x</button></div>
+            <div class="item">Staff <button>x</button></div>
+        </div>
+        <div class="column">
+            <h3>Activities</h3>
+            <div class="item">Workshops <button>x</button></div>
+            <div class="item">Mentoring <button>x</button></div>
+        </div>
+        <div class="column">
+            <h3>Outputs</h3>
+            <div class="item"># Students Served <button>x</button></div>
+        </div>
+        <div class="column">
+            <h3>Short-Term Outcomes</h3>
+            <div class="item">Increased Knowledge <button>x</button></div>
+        </div>
+        <div class="column">
+            <h3>Medium-Term Outcomes</h3>
+            <div class="item">Behavior Change <button>x</button></div>
+        </div>
+        <div class="column">
+            <h3>Long-Term Outcomes</h3>
+            <div class="item">Sustained Impact <button>x</button></div>
+        </div>
+    </div>
 
-  <div>
-    <input id="itemText" placeholder="Enter item">
-    <select id="itemCategory">
-      <option>Inputs</option>
-      <option>Activities</option>
-      <option>Outputs</option>
-      <option>Short-Term Outcomes</option>
-      <option>Medium-Term Outcomes</option>
-      <option>Long-Term Outcomes</option>
-    </select>
-    <button onclick="addItem()">Add</button>
-  </div>
+    <div class="form-control">
+        <input type="text" placeholder="Enter item">
+        <select>
+            <option>Inputs</option>
+            <option>Activities</option>
+            <option>Outputs</option>
+            <option>Short-Term Outcomes</option>
+            <option>Medium-Term Outcomes</option>
+            <option>Long-Term Outcomes</option>
+        </select>
+        <button>Add</button>
+    </div>
 
-  <div class="controls">
-    <button onclick="clearAll()">Clear</button>
-    <button onclick="saveModel()">Save</button>
-    <button onclick="loadModel()">Load</button>
-    <button onclick="exportExcel()">Excel</button>
-    <button onclick="exportPDF()">PDF</button>
-  </div>
+    <div class="export-buttons">
+        <button class="clear">Clear</button>
+        <button class="excel">Excel</button>
+        <button class="pdf">PDF</button>
+    </div>
+</body>
+</html>
 
-  <div style="margin-top:20px;">
-    <strong>Copy Embed Code</strong>
-    <input readonly value="<iframe src='YOUR_URL_HERE' width='100%' height='600'></iframe>" style="width:80%;"/>
-  </div>
+-Term Outcomes</h3>
+            <div class="item">Knowledge Gained <button>x</button></div>
+        </div>
+        <div class="column">
+            <h3>Medium-Term Outcomes</h3>
+            <div class="item">Behavior Change <button>x</button></div>
+        </div>
+        <div class="column">
+            <h3>Long-Term Outcomes</h3>
+            <div class="item">Graduation <button>x</button></div>
+        </div>
+    </div>
 
-  <script>
-    const sections = {
-      "Inputs": [],
-      "Activities": [],
-      "Outputs": [],
-      "Short-Term Outcomes": [],
-      "Medium-Term Outcomes": [],
-      "Long-Term Outcomes": []
-    };
+    <div class="form-control">
+        <input type="text" placeholder="Enter item">
+        <select>
+            <option>Inputs</option>
+            <option>Activities</option>
+            <option>Outputs</option>
+            <option>Short-Term Outcomes</option>
+            <option>Medium-Term Outcomes</option>
+            <option>Long-Term Outcomes</option>
+        </select>
+        <button>Add</button>
+    </div>
 
-    function render() {
-      let html = '';
-      for (let [key, items] of Object.entries(sections)) {
-        html += `<div class="section"><h3>${key}</h3>`;
-        items.forEach((item, index) => {
-          html += `<div class="item-box">${item} <button onclick="removeItem('${key}', ${index})">x</button></div>`;
-        });
-        html += '</div>';
-      }
-      document.getElementById('logic-model').innerHTML = html;
-    }
-
-    function addItem() {
-      const text = document.getElementById('itemText').value.trim();
-      const category = document.getElementById('itemCategory').value;
-      if (text) {
-        sections[category].push(text);
-        render();
-        document.getElementById('itemText').value = '';
-      }
-    }
-
-    function removeItem(category, index) {
-      sections[category].splice(index, 1);
-      render();
-    }
-
-    function clearAll() {
-      for (let key in sections) sections[key] = [];
-      render();
-    }
-
-    function saveModel() {
-      localStorage.setItem('logicModelData', JSON.stringify(sections));
-      alert("Saved to browser storage!");
-    }
-
-    function loadModel() {
-      const data = localStorage.getItem('logicModelData');
-      if (data) {
-        const parsed = JSON.parse(data);
-        for (let key in parsed) sections[key] = parsed[key];
-        render();
-      } else {
-        alert("No saved model found.");
-      }
-    }
-
-    function exportExcel() {
-      alert("Excel export will be available in next version.");
-    }
-
-    function exportPDF() {
-      window.print();
-    }
-
-    window.onload = render;
-  </script>
+    <div class="export-buttons">
+        <button class="clear">Clear</button>
+        <button class="excel">Excel</button>
+        <button class="pdf">PDF</button>
+        <button class="pdf">Image</button>
+        <button class="excel">Share</button>
+    </div>
 </body>
 </html>
