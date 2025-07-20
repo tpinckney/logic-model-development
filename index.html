@@ -32,52 +32,74 @@
       background-color: #ececd9;
     }
     .logic-box {
+      min-width: 200px;
       transition: all 0.3s ease;
     }
     .logic-box:hover {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-                  0 4px 6px -2px rgba(0, 0, 0, 0.05);
       transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .arrow::after {
+      content: '→';
+      font-size: 20px;
+      margin: 0 10px;
+      color: #333;
     }
   </style>
 </head>
 <body>
-  <div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold text-brand-darkOlive text-center mb-8">Logic Model Builder</h1>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-      <div>
-        <h2 class="text-xl font-semibold text-brand-darkOlive mb-2 text-center">Inputs</h2>
-        <ul id="inputs-list" class="space-y-2 bg-white p-4 rounded shadow"></ul>
-      </div>
-      <div>
-        <h2 class="text-xl font-semibold text-brand-darkGold mb-2 text-center">Activities</h2>
-        <ul id="activities-list" class="space-y-2 bg-white p-4 rounded shadow"></ul>
-      </div>
-      <div>
-        <h2 class="text-xl font-semibold text-brand-darkOrange mb-2 text-center">Outputs</h2>
-        <ul id="outputs-list" class="space-y-2 bg-white p-4 rounded shadow"></ul>
-      </div>
+  <div class="container mx-auto px-4 py-8 bg-[#ececd9]">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-brand-darkOlive">Logic Model Builder</h1>
+      <p class="text-lg text-brand-darkOrange font-semibold">Brought to you by Vision Shift Catalyst</p>
+      <p class="mt-4 text-brand-black max-w-3xl mx-auto">
+        Build a logic model that connects your program's inputs, activities, and outcomes—with clarity, intention, and measurable impact.
+      </p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-      <div>
-        <h2 class="text-xl font-semibold text-brand-darkGold mb-2 text-center">Short-Term Outcomes</h2>
-        <ul id="short-list" class="space-y-2 bg-white p-4 rounded shadow"></ul>
+
+    <div class="flex flex-col md:flex-row items-start justify-start gap-4 overflow-x-auto mb-8">
+      <div class="logic-box bg-white border-t-4 border-brand-darkOlive rounded-lg p-4 flex-1">
+        <h2 class="text-xl font-bold text-brand-darkOlive text-center">Inputs</h2>
+        <p class="text-xs text-center mb-2">(resources invested)</p>
+        <ul id="inputs-list" class="space-y-2"></ul>
       </div>
-      <div>
-        <h2 class="text-xl font-semibold text-brand-darkOrange mb-2 text-center">Medium-Term Outcomes</h2>
-        <ul id="medium-list" class="space-y-2 bg-white p-4 rounded shadow"></ul>
+      <div class="arrow"></div>
+      <div class="logic-box bg-white border-t-4 border-brand-darkGold rounded-lg p-4 flex-1">
+        <h2 class="text-xl font-bold text-brand-darkGold text-center">Activities</h2>
+        <p class="text-xs text-center mb-2">(what you do)</p>
+        <ul id="activities-list" class="space-y-2"></ul>
       </div>
-      <div>
-        <h2 class="text-xl font-semibold text-brand-darkOlive mb-2 text-center">Long-Term Outcomes</h2>
-        <ul id="long-list" class="space-y-2 bg-white p-4 rounded shadow"></ul>
+      <div class="arrow"></div>
+      <div class="logic-box bg-white border-t-4 border-brand-darkOrange rounded-lg p-4 flex-1">
+        <h2 class="text-xl font-bold text-brand-darkOrange text-center">Outputs</h2>
+        <p class="text-xs text-center mb-2">(immediate deliverables)</p>
+        <ul id="outputs-list" class="space-y-2"></ul>
+      </div>
+      <div class="arrow"></div>
+      <div class="logic-box bg-white border-t-4 border-brand-darkGold rounded-lg p-4 flex-1">
+        <h2 class="text-xl font-bold text-brand-darkGold text-center">Short-Term Outcomes</h2>
+        <p class="text-xs text-center mb-2">(knowledge, skills, awareness)</p>
+        <ul id="short-list" class="space-y-2"></ul>
+      </div>
+      <div class="arrow"></div>
+      <div class="logic-box bg-white border-t-4 border-brand-darkOrange rounded-lg p-4 flex-1">
+        <h2 class="text-xl font-bold text-brand-darkOrange text-center">Medium-Term Outcomes</h2>
+        <p class="text-xs text-center mb-2">(behavior, practice, performance)</p>
+        <ul id="medium-list" class="space-y-2"></ul>
+      </div>
+      <div class="arrow"></div>
+      <div class="logic-box bg-white border-t-4 border-brand-darkOlive rounded-lg p-4 flex-1">
+        <h2 class="text-xl font-bold text-brand-darkOlive text-center">Long-Term Outcomes</h2>
+        <p class="text-xs text-center mb-2">(impact, systems, sustainability)</p>
+        <ul id="long-list" class="space-y-2"></ul>
       </div>
     </div>
 
-    <div class="bg-white p-6 rounded shadow mb-8">
-      <h2 class="text-xl font-semibold mb-4 text-brand-black">Add New Item</h2>
+    <div class="bg-white rounded-lg p-6 mb-8 shadow">
+      <h2 class="text-xl font-semibold text-brand-black mb-4">Add New Item</h2>
       <div class="flex flex-col md:flex-row gap-4">
-        <input id="item-text" type="text" placeholder="Enter item text" class="w-full border p-2 rounded"/>
-        <select id="item-category" class="w-full border p-2 rounded">
+        <input id="item-text" type="text" placeholder="Enter item text" class="flex-1 border border-gray-300 p-2 rounded">
+        <select id="item-category" class="w-48 border border-gray-300 p-2 rounded">
           <option value="inputs">Inputs</option>
           <option value="activities">Activities</option>
           <option value="outputs">Outputs</option>
@@ -89,8 +111,9 @@
       </div>
     </div>
 
-    <div class="flex justify-center gap-4">
-      <button id="clear-all" class="px-4 py-2 border rounded text-brand-black hover:bg-gray-100">Clear All</button>
+    <div class="flex justify-between items-center mb-12">
+      <button id="clear-all" class="border px-4 py-2 rounded text-brand-black bg-white hover:bg-gray-100">Clear All Items</button>
+      <button id="print-btn" class="bg-brand-darkOrange text-white px-6 py-2 rounded hover:bg-opacity-90">Export Logic Model</button>
     </div>
   </div>
 
@@ -107,8 +130,7 @@
     function createListItem(text) {
       const li = document.createElement('li');
       li.className = 'flex justify-between items-center bg-brand-cream p-2 rounded shadow';
-      li.innerHTML = `<span>${text}</span>
-        <button class="text-red-600 hover:text-red-800" onclick="this.parentElement.remove()">✕</button>`;
+      li.innerHTML = `<span>${text}</span><button class="text-red-600 hover:text-red-800" onclick="this.parentElement.remove()">✕</button>`;
       return li;
     }
 
@@ -125,6 +147,10 @@
       if (confirm("Are you sure you want to clear all items?")) {
         Object.values(lists).forEach(list => list.innerHTML = '');
       }
+    });
+
+    document.getElementById('print-btn').addEventListener('click', () => {
+      window.print();
     });
   </script>
 </body>
